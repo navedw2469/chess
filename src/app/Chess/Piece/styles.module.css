@@ -19,8 +19,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 65px;
-  height: 65px;
+  width: 62px;
+  height: 62px;
+  cursor: pointer;
 }
 
 .blurredCircleCaptureParent{
@@ -28,6 +29,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 65px;
-  height: 65px;
+  width: 62px;
+  height: 62px;
+  cursor: pointer;
 }

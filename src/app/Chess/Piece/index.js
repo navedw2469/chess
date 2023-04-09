@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import blurrCircle from "./../Images/blurrCircle.png";
-import {pieceImageMapping, King, Queen, Bishop, Rook, Knight, BlackPawn, WhitePawn } from "./../constants"
+import {pieceImageMapping, King, Queen, Bishop, Rook, Knight, BlackPawn, WhitePawn, InitialPiecePositionMapping } from "./../constants"
 import styles from './styles.module.css';
 
 const nextChar = (c, incrementBy) => {
@@ -20,6 +20,8 @@ const Piece = ({
   setCurrentMovablePiece,
   movablePositions,
   setMovablePositions,
+  enPassantablePawn,
+  setEnPassantablePawn,
 }) => {
 
   const whereKingCanMove = (currentPosition) => {
@@ -173,18 +175,25 @@ const Piece = ({
 
     const pawnMovablePositions = [];
 
-    const tempRow = +row + m;
-    if (tempRow < 1 || tempRow > 8) return [];
+    [1,2].forEach((r)=>{
+      if(r === 2 && currentPosition !== InitialPiecePositionMapping[positionPieceMapping[currentPosition]]) return;
 
-    [-1,0,1].forEach((c)=>{
-      const tempCol = nextChar(column, c);
-      if (!tempRow) return;
-
-      const tempPosition = `${tempCol}${tempRow}`;
-      if(c === 0 && positionPieceMapping[tempPosition]) return;
-      if(c === 1 && !positionPieceMapping[tempPosition]) return;
-      if(c === -1 && !positionPieceMapping[tempPosition]) return;
-      pawnMovablePositions.push(tempPosition);
+      const tempRow = +row + r*m;
+      if (tempRow < 1 || tempRow > 8) return [];
+  
+      [-1,0,1].forEach((c)=>{
+        const tempCol = nextChar(column, c);
+        if (!tempRow) return;
+  
+        const tempPosition = `${tempCol}${tempRow}`;
+        if(c === 0 && !positionPieceMapping[tempPosition]){
+          pawnMovablePositions.push(tempPosition);
+        }else if((c === 1 || c === -1) && r === 1 && 
+        ((positionPieceMapping[tempPosition] && positionPieceMapping[tempPosition].slice(0,5) !== positionPieceMapping[currentPosition].slice(0,5)) || 
+        positionPieceMapping[`${tempCol}${row}`] === enPassantablePawn)){
+          pawnMovablePositions.push(tempPosition);
+        }
+      })
     })
     return pawnMovablePositions;
   }
@@ -210,8 +219,38 @@ const Piece = ({
     setPositionPieceMapping({ ...positionPieceMapping });
   };
 
+  const enPassantablity = (pos) =>{
+    const row = pos[1];
+    const col = pos[0];
+
+    const currentRow = piecePositionMapping[currentMovablePiece][1];
+    const currentCol = piecePositionMapping[currentMovablePiece][0];
+
+    if(Math.abs(+currentRow - +row) === 2){
+      setEnPassantablePawn(currentMovablePiece);
+      return;
+    }
+    
+    const remPawnAtPos = `${col}${currentRow}`;
+    
+    if(currentCol === col || enPassantablePawn !== positionPieceMapping[remPawnAtPos]){
+      setEnPassantablePawn("nothing");
+      return;
+    }
+    
+    const remPawn = positionPieceMapping[remPawnAtPos];
+    piecePositionMapping[remPawn] = null;
+    positionPieceMapping[remPawnAtPos] = null;
+    setEnPassantablePawn("nothing");
+  }
+
   const movePosition = (pos) => {
     const currentPosition = piecePositionMapping[currentMovablePiece];
+    if([...WhitePawn, ...BlackPawn].includes(positionPieceMapping[currentPosition])){
+      enPassantablity(pos);
+    }else{
+      setEnPassantablePawn("nothing");
+    }
     positionPieceMapping[currentPosition] = null;
     positionPieceMapping[pos] = currentMovablePiece;
     piecePositionMapping[currentMovablePiece] = pos;
@@ -235,6 +274,7 @@ const Piece = ({
           alt="chess piece"
           height={60}
           width={60}
+          style={movablePositions.includes(position) && {cursor: 'pointer'}}
         />
       }
 

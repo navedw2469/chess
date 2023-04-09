@@ -4,11 +4,11 @@ import styles from './styles.module.css'
 import {InitialPositionPieceMapping, InitialPiecePositionMapping} from "./constants";
 
 export default function App() {
-  const [positionPieceMapping, setPositionPieceMapping] = useState(InitialPositionPieceMapping);
-  const [piecePositionMapping, setPiecePositionMapping] = useState(InitialPiecePositionMapping);
-  console.log(positionPieceMapping, 'jhj')
+  const [positionPieceMapping, setPositionPieceMapping] = useState({ ...InitialPositionPieceMapping });
+  const [piecePositionMapping, setPiecePositionMapping] = useState({ ...InitialPiecePositionMapping });
   const [movablePositions, setMovablePositions] = useState([]);
   const [currentMovablePiece, setCurrentMovablePiece] = useState("nothing");
+  const [enPassantablePawn, setEnPassantablePawn] = useState("nothing");
   return (
     <div className={styles.App}>
       <div className={styles.box}>
@@ -33,6 +33,8 @@ export default function App() {
                       setCurrentMovablePiece={setCurrentMovablePiece}
                       movablePositions={movablePositions}
                       setMovablePositions={setMovablePositions}
+                      enPassantablePawn={enPassantablePawn}
+                      setEnPassantablePawn={setEnPassantablePawn}
                     />
                   </div>
                 );
