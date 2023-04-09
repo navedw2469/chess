@@ -1,0 +1,118 @@
+.widthDivider {
+  display: flex;
+  flex-direction: column;
+  width: 65px;
+}
+
+.columnDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  height: 65px;
+}
+
+.box {
+  display: flex;
+  width: 520px;
+  height: 520px;
+  border: 1px solid;
+}
+
+#a1,
+#c1,
+#e1,
+#g1 {
+  background-color: white;
+}
+#b2,
+#d2,
+#f2,
+#h2 {
+  background-color: white;
+}
+#a3,
+#c3,
+#e3,
+#g3 {
+  background-color: white;
+}
+#b4,
+#d4,
+#f4,
+#h4 {
+  background-color: white;
+}
+#a5,
+#c5,
+#e5,
+#g5 {
+  background-color: white;
+}
+#b6,
+#d6,
+#f6,
+#h6 {
+  background-color: white;
+}
+#a7,
+#c7,
+#e7,
+#g7 {
+  background-color: white;
+}
+#b8,
+#d8,
+#f8,
+#h8 {
+  background-color: white;
+}
+
+#b1,
+#d1,
+#f1,
+#h1 {
+  background-color: #a47551;
+}
+#a2,
+#c2,
+#e2,
+#g2 {
+  background-color: #a47551;
+}
+#b3,
+#d3,
+#f3,
+#h3 {
+  background-color: #a47551;
+}
+#a4,
+#c4,
+#e4,
+#g4 {
+  background-color: #a47551;
+}
+#b5,
+#d5,
+#f5,
+#h5 {
+  background-color: #a47551;
+}
+#a6,
+#c6,
+#e6,
+#g6 {
+  background-color: #a47551;
+}
+#b7,
+#d7,
+#f7,
+#h7 {
+  background-color: #a47551;
+}
+#a8,
+#c8,
+#e8,
+#g8 {
+  background-color: #a47551;
+}

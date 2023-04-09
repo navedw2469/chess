@@ -1,0 +1,33 @@
+.piece{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.piece > img {
+  position: absolute;
+}
+
+.blurredCircle {
+  background: green;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.blurredCircleParent{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+}
+
+.blurredCircleCaptureParent{
+  background: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+}
