@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Piece from "./Piece";
 import styles from './styles.module.css'
-import {InitialPositionPieceMapping, InitialPiecePositionMapping} from "./constants";
+import {InitialPositionPieceMapping, InitialPiecePositionMapping, IsPieceMoved} from "./constants";
 
 export default function App() {
   const [positionPieceMapping, setPositionPieceMapping] = useState({ ...InitialPositionPieceMapping });
@@ -9,6 +9,8 @@ export default function App() {
   const [movablePositions, setMovablePositions] = useState([]);
   const [currentMovablePiece, setCurrentMovablePiece] = useState("nothing");
   const [enPassantablePawn, setEnPassantablePawn] = useState("nothing");
+  const [isPieceMoved, setIsPieceMoved] = useState(IsPieceMoved);
+
   return (
     <div className={styles.App}>
       <div className={styles.box}>
@@ -35,6 +37,8 @@ export default function App() {
                       setMovablePositions={setMovablePositions}
                       enPassantablePawn={enPassantablePawn}
                       setEnPassantablePawn={setEnPassantablePawn}
+                      isPieceMoved={isPieceMoved}
+                      setIsPieceMoved={setIsPieceMoved}
                     />
                   </div>
                 );

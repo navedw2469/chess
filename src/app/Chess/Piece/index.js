@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import blurrCircle from "./../Images/blurrCircle.png";
-import {pieceImageMapping, King, Queen, Bishop, Rook, Knight, BlackPawn, WhitePawn, InitialPiecePositionMapping } from "./../constants"
+import {PieceImageMapping, King, Queen, Bishop, Rook, Knight, BlackPawn, WhitePawn, InitialPiecePositionMapping } from "./../constants"
 import styles from './styles.module.css';
 
 const nextChar = (c, incrementBy) => {
@@ -270,7 +270,7 @@ const Piece = ({
           onClick={() => {
             movablePositions.includes(position) ? movePosition(position) : showMovablePostions(positionPieceMapping[position]);
           }}
-          src={pieceImageMapping[positionPieceMapping[position]]}
+          src={PieceImageMapping[positionPieceMapping[position]]}
           alt="chess piece"
           height={60}
           width={60}
