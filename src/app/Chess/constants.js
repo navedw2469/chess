@@ -1,16 +1,16 @@
-import whitePawnPng from "./Images/whitePawn.png";
-import whiteKnightPng from "./Images/whiteKnight.png";
-import whiteRookPng from "./Images/whiteRook.png";
+import whitePawnPng from "./images/whitePawn.png";
+import whiteKnightPng from "./images/whiteKnight.png";
+import whiteRookPng from "./images/whiteRook.png";
 import whiteBishopPng from "./images/whiteBishop.png";
-import whiteQueenPng from "./Images/whiteQueen.png";
-import whiteKingPng from "./Images/whiteKing.png";
+import whiteQueenPng from "./images/whiteQueen.png";
+import whiteKingPng from "./images/whiteKing.png";
 
-import blackPawnPng from "./Images/blackPawn.png";
-import blackKnightPng from "./Images/blackKnight.png";
-import blackRookPng from "./Images/blackRook.png";
+import blackPawnPng from "./images/blackPawn.png";
+import blackKnightPng from "./images/blackKnight.png";
+import blackRookPng from "./images/blackRook.png";
 import blackBishopPng from "./images/blackBishop.png";
-import blackQueenPng from "./Images/blackQueen.png";
-import blackKingPng from "./Images/blackKing.png";
+import blackQueenPng from "./images/blackQueen.png";
+import blackKingPng from "./images/blackKing.png";
 
 const PieceEncoding = {
   empty: 0,
