@@ -1,23 +1,31 @@
-.widthDivider {
+.row {
+  height: 65px;
   display: flex;
-  flex-direction: column;
-  width: 65px;
 }
 
-.columnDivider {
+.cell {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid;
-  height: 65px;
+  /* border: 1px solid; */
+  width: 65px;
 }
 
 .box {
-  display: flex;
   width: 520px;
   height: 520px;
   border: 1px solid;
 }
+
+#white{
+  background-color: #f0d9b5;
+}
+
+#black{
+  background-color: #a47551;
+}
+
+
 
 #a1,
 #c1,
